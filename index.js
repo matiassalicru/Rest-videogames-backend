@@ -12,6 +12,8 @@ const port = 3000;
 let auth = "no secret key";
 if (envFound) {
   auth = process.env.SECRET_KEY;
+} else {
+  console.log(auth);
 }
 
 console.log(
@@ -31,8 +33,8 @@ axios({
   data: "fields game,height,image_id,url,width; limit 10;",
 })
   .then((res) => {
-    console.log(res.data);
     data.push(res.data);
+    console.log(data);
   })
   .catch((e) => {
     console.log(e);
